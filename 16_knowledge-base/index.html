@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.6/simplebar.min.css" />
+  <link rel="stylesheet" href="css/choices.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Customs Elements</title>
+</head>
+
+<body class="main-page">
+  <section class="section-checkbox">
+    <h2 class="checkbox__title">Категории:</h2>
+    <form action="#" class="checkbox__form">
+      <label class="checkbox__label option">
+        <input type="checkbox" class="checkbox__input" checked>
+        <span class="checkbox__custom"></span>
+        Динозавры
+      </label>
+      <label class="checkbox__label option">
+        <input type="checkbox" class="checkbox__input">
+        <span class="checkbox__custom"></span>
+        Медведи
+      </label>
+      <label class="checkbox__label option">
+        <input type="checkbox" class="checkbox__input">
+        <span class="checkbox__custom"></span>
+        Косули
+      </label>
+      <label class="checkbox__label option">
+        <input type="checkbox" class="checkbox__input">
+        <span class="checkbox__custom"></span>
+        Лисы
+      </label>
+      <label class="checkbox__label option">
+        <input type="checkbox" class="checkbox__input" disabled>
+        <span class="checkbox__custom"></span>
+        Волки
+      </label>
+      <label class="checkbox__label option">
+        <input type="checkbox" class="checkbox__input" checked disabled>
+        <span class="checkbox__custom"></span>
+        Олени и лоси
+      </label>
+    </form>
+  </section>
+  <section class="section-select">
+    <select class="select">
+      <option value="Материал" class="select__option" selected disabled>Материал</option>
+      <option value="Древесина" class="select__option">Древесина</option>
+      <option value="Металл" class="select__option">Металл</option>
+      <option value="Камень" class="select__option">Камень</option>
+      <option value="Пластик" class="select__option">Пластик</option>
+      <option value="Композитный" class="select__option">Композитный</option>
+      <option value="Гипс" class="select__option">Гипс</option>
+    </select>
+  </section>
+  <section class="section-map">
+    <div id="map" class="map__container">
+
+    </div>
+  </section>
+  <section data-simplebar class="section-scroll customScroll">
+    <div class="scroll__text">Сложно сказать, почему многие известные личности представлены в исключительно
+      положительном
+      свете. Лишь активно развивающиеся страны третьего мира будут объективно рассмотрены соответствующими инстанциями.
+      Мы вынуждены отталкиваться от того, что высокотехнологичная концепция общественного уклада представляет собой
+      интересный эксперимент проверки глубокомысленных рассуждений. Имеется спорная точка зрения, гласящая примерно
+      следующее: непосредственные участники технического прогресса освещают чрезвычайно интересные особенности картины в
+      целом, однако конкретные выводы, разумеется, обнародованы. Значимость этих проблем настолько очевидна, что
+      социально-экономическое развитие, а также свежий взгляд на привычные вещи - безусловно открывает новые горизонты
+      для первоочередных требований.
+    </div>
+  </section>
+  <section class="section-form">
+    <form id="form" action="#" class="form">
+      <input type="text" name="name" placeholder="Имя*" class="input form__input" data-validate-field="name">
+      <input type="tel" name="tel" placeholder="Телефон*" class="input form__input" data-validate-field="tel"
+        data-validate-rules="phone">
+      <input type="email" name="mail" placeholder="E-mail*" class="input form__input" data-validate-field="mail">
+      <button class="btn-reset form__button">Заказать</button>
+    </form>
+  </section>
+  <section class="section-tooltip">
+    <div class="tooltip__block">
+      Следует отметить, что социально-экономическое развитие способствует повышению качества переосмысления
+      внешнеэкономических политик.
+      <span tabindex="0" class="tooltip__svg">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16ZM8 3C7.33333 3 7 3.31919 7 3.95758C7 4.60026 7.33333 4.92159 8 4.92159C8.33333 4.92159 8.58233 4.83805 8.74699 4.67095C8.91566 4.49957 9 4.26178 9 3.95758C9 3.31919 8.66667 3 8 3ZM7.07831 13H8.91566V5.81491H7.07831V13Z"
+            fill="#BCBCBC" />
+        </svg>
+      </span>
+      <div class="popup">
+        Глава 2, страница 176
+        <span class="popup__arrow"></span>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <script src="js/choices.min.js"></script>
+  <script>
+    const element = document.querySelector('.select');
+    const choices = new Choices(element, {
+      searchEnabled: false,
+      itemSelectText: '',
+      shouldSort: false
+    });
+  </script>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript"></script>
+  <script type="text/javascript">
+    // Функция ymaps.ready() будет вызвана, когда
+    // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+    ymaps.ready(init);
+    function init() {
+      // Создание карты.
+      var myMap = new ymaps.Map("map", {
+        // Координаты центра карты.
+        // Порядок по умолчанию: «широта, долгота».
+        // Чтобы не определять координаты центра карты вручную,
+        // воспользуйтесь инструментом Определение координат.
+        center: [48.872185073737896, 2.354223999999991],
+        // Уровень масштабирования. Допустимые значения:
+        // от 0 (весь мир) до 19.
+        zoom: 17
+      });
+
+      var myPlacemark = new ymaps.Placemark([48.872185073737896, 2.354223999999991], {}, {
+        iconLayout: 'default#image',
+        iconImageHref: 'img/location.svg',
+        iconImageSize: [28, 40],
+        iconImageOffset: [-3, -42]
+      });
+      myMap.geoObjects.add(myPlacemark);
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/5.3.6/simplebar.min.js"></script>
+  <script>
+    new SimpleBar(document.querySelector(".customScroll"), {
+      /* чтобы изначально ползунок был виден */
+      autoHide: false,
+      /* с помощью этого значения вы можете управлять высотой ползунка*/
+      scrollbarMaxSize: 84,
+    });
+  </script>
+  <script src="js/inputmask.min.js"></script>
+  <script src="js/just-validate.min.js"></script>
+  <script>
+    var selector = document.querySelector("input[type='tel']");
+
+    var im = new Inputmask("+7 (999) 999 99 99");
+    im.mask(selector);
+
+    new JustValidate('.form', {
+      rules: {
+        name: {
+          required: true,
+          minLength: 2,
+          maxLength: 30
+        },
+        tel: {
+          required: true,
+          function: (name, value) => {
+            const phone = selector.inputmask.unmaskedvalue()
+            return Number(phone) && phone.length === 10
+          },
+        },
+        mail: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        name: {
+          required: 'Вы не ввели имя',
+          minLength: 'Поле должно содержать не менее двух символов',
+          maxLength: 'Поле должно содержать не более 30 символов'
+        },
+        tel: {
+          required: 'Вы не ввели телефон',
+          function: 'Введенный телефон некорректен'
+        },
+        mail: {
+          required: 'Вы не ввели свой email',
+          email: 'Введенный email некорректен'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
