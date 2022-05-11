@@ -3,10 +3,6 @@
     padding-top: 70px;
   }
 
-  .teacher-list__img {
-    width: 100%;
-  }
-
   .courses-list__bg-settings {
     background-size: 450px 180px;
   }
@@ -33,7 +29,7 @@
 }
 
 
-@media only screen and (max-width: 991px), (orientation: landscape) {
+@media only screen and (max-width: 991px) {
   .hero {
     padding-bottom: 17px;
   }
@@ -113,7 +109,7 @@
   }
 }
 
-@media only screen and (max-width: 767px), (orientation: portrait) {
+@media only screen and (max-width: 767px) {
   .header__container {
     justify-content: center;
   }
@@ -190,7 +186,7 @@
   }
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 575px) {
   .header__container {
     justify-content: space-between;
     align-items: center;
@@ -211,20 +207,32 @@
 
   .nav__list.is-open {
     position: absolute;
+    display: block;
+    animation: show-menu .15s ease-in-out 0s 1 normal forwards;
     left: 0;
     top: -30px;
     right: 0;
     bottom: 0;
     padding: 76px 0 0 15px;
     z-index: 1;
-    display: block;
     width: 100%;
     min-height: 433px;
     flex-direction: column;
     background-color: #2F2C45;
   }
 
-
+  @keyframes show-menu {
+    0% {
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+    }
+    100% {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
   .nav__list.is-open .nav__item:not(:last-child) {
     margin-bottom: 56px;
   }
@@ -264,8 +272,16 @@
     line-height: 19px;
   }
 
+  .adv__list {
+    flex-direction: column;
+  }
+
+  .adv-list__content {
+    background-position: left;
+  }
+
   .adv {
-    padding: 51px 0 50px 0;
+    padding: 51px 0 14px 0;
   }
 
   .adv__title {
@@ -275,14 +291,15 @@
   .adv__content {
     padding-left: 0;
     background-image: none;
+    padding-bottom: 0;
   }
 
   .adv-list__descr {
-    padding: 2px 0 2px 110px;
+    padding: 21.5px 0 21.5px 110px;
   }
 
   .adv__item:not(:last-child) {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
   }
 
   .teachers {
@@ -291,6 +308,7 @@
 
   .teacher-list__img {
     max-height: 180px;
+    width: 100%;
   }
 
   .courses {
@@ -306,7 +324,7 @@
   }
 
   .courses-list__time {
-    left: 62%;
+    left: calc(100% - 120px);
   }
 
   .courses-list__content {
