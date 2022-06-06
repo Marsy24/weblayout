@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Muller';
+  src:
+  local('Muller'), local('MullerRegular'),
+  url('../fonts/MullerRegular.woff2') format('woff2'),
+  url('../fonts/MullerRegular.woff') format('woff');
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src:
+  local('Muller'), local('MullerMedium'),
+  url('../fonts/MullerMedium.woff2') format('woff2'),
+  url('../fonts/MullerMedium.woff') format('woff');
+  font-display: swap;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src:
+  local('Muller'), local('MullerBold'),
+  url('../fonts/MullerBold.woff2') format('woff2'),
+  url('../fonts/MullerBold.woff') format('woff');
+  font-display: swap;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src:
+  local('Muller'), local('MullerLightItalic'),
+  url('../fonts/MullerLightItalic.woff2') format('woff2'),
+  url('../fonts/MullerLightItalic.woff') format('woff');
+  font-display: swap;
+  font-style: italic;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Muller';
+  src:
+  local('Muller'), local('MullerRegularItalic'),
+  url('../fonts/MullerRegularItalic.woff2') format('woff2'),
+  url('../fonts/MullerRegularItalic.woff') format('woff');
+  font-display: swap;
+  font-style: italic;
+  font-weight: 400;
+}
