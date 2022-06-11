@@ -10,13 +10,15 @@ addEventListener('DOMContentLoaded', function () {
   })
 
   const select = document.querySelector('.broadcasts__select');
-  const customSelect = new Choices(select, {
-    searchEnabled: false,
-    itemSelectText: '',
-    shouldSort: false
-  })
+  if (select) {
+    const customSelect = new Choices(select, {
+      searchEnabled: false,
+      itemSelectText: '',
+      shouldSort: false
+    })
+  }
 
-  // accordion vanila js
+  // accordion js
   const accordionTitlesArray = document.querySelectorAll(`[data-accordion]`);
   if (accordionTitlesArray.length > 0) {
     const accordionRegular = Array.from(accordionTitlesArray).filter(function (item, index, self) {
@@ -24,51 +26,6 @@ addEventListener('DOMContentLoaded', function () {
     });
     if (accordionRegular.length > 0) {
       initAccordion(accordionRegular);
-    }
-
-    const accordionMedia = Array.from(accordionTitlesArray).filter(function (item, index, self) {
-      return item.dataset.accordion.split(",")[0];
-    });
-
-    if (accordionMedia.length > 0) {
-      const breakpointsArray = []; // contains media info
-      accordionMedia.forEach(item => {
-        const params = item.dataset.accordion;
-        const breakpoint = {};
-        const paramsArray = params.split(",");
-        breakpoint.value = paramsArray[0];
-        breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : "max";
-        breakpoint.item = item;
-        breakpointsArray.push(breakpoint);
-      });
-
-      // get unique breakpoints
-      let mediaQueries = breakpointsArray.map(function (item) {
-        return "(" + item.type + "-width: " + item.value + "px)," + item.value + "," + item.type;
-      });
-      mediaQueries = mediaQueries.filter(function (item, index, self) {
-        return self.indexOf(item) === index;
-      });
-
-      // Working with each breakpoints
-      mediaQueries.forEach(breakpoint => {
-        const paramsArray = breakpoint.split(",");
-        const mediaBreakpoint = paramsArray[1];
-        const mediaType = paramsArray[2];
-        const matchMedia = window.matchMedia(paramsArray[0]);
-
-        // Objects with the right conditions
-        const accordionTitlesArray = breakpointsArray.filter(function (item) {
-          if (item.value === mediaBreakpoint && item.type === mediaType) {
-            return true;
-          }
-        });
-        // Event
-        matchMedia.addEventListener('change', () => {
-          initAccordion(accordionTitlesArray, matchMedia);
-        });
-        initAccordion(accordionTitlesArray, matchMedia);
-      })
     }
   }
   // Initialization accordion
@@ -114,6 +71,10 @@ addEventListener('DOMContentLoaded', function () {
       const oneAccordion = bodyBlock.closest(`[data-one-accordion]`) ? true : false;
       if (!bodyBlock.querySelectorAll('.slide').length) {
         accordionTitle.classList.add('is-active');
+        accordionTitle.nextElementSibling.classList.add('alpha');
+        setTimeout(() => {
+          accordionTitle.nextElementSibling.classList.remove('alpha');
+        }, 550);
         if (oneAccordion) {
           document.querySelectorAll(`[data-title-accordion]`).forEach(function (elem) {
             if (elem.classList.contains('is-active') && !elem.nextElementSibling.hasAttribute('hidden')) {
@@ -199,24 +160,54 @@ addEventListener('DOMContentLoaded', function () {
     }
   }
   /*------------------------------------------------------------------------------- */
+  // guests-content
   let personBtn = document.querySelectorAll('.guests__btn');
   let personContent = document.querySelectorAll('.guests__content');
   let socialListGuests = document.querySelector('.social-list')
   personBtn.forEach(function (btnClick) {
     btnClick.addEventListener('click', function (event) {
+      event.preventDefault();
       const person = event.currentTarget.dataset.person;
       personBtn.forEach(function (delLastActive) {
         delLastActive.classList.remove('is-active');
-      })
+      });
       personContent.forEach(function (delLastActive) {
         delLastActive.classList.remove('is-active');
-      })
+      });
       document.querySelector(`[data-person="${person}"]`).classList.add('is-active');
       document.querySelector(`[data-target-person="${person}"]`).classList.add('is-active');
+      if (window.innerWidth <= 1023) {
+        document.querySelector(`[data-target-person="${person}"]`).scrollIntoView(
+          {
+            block: 'nearest',
+            behavior: 'smooth'
+          }
+        );
+      }
       socialListGuests.classList.remove('is-active');
       setTimeout(() => {
         socialListGuests.classList.add('is-active');
       }, 10); /* Добавил setTimeout, т.к. если написать подряд remove is-active и add is-active, то не срабатывает keyframe в css(Не разобрался почему) */
+    })
+  })
+
+  // playlist-content
+  let inputs = document.querySelectorAll('.check__input');
+  let playlistItems = document.querySelectorAll('.playlist__item');
+  inputs.forEach(function (inputClick) {
+    inputClick.addEventListener('click', (event) => {
+      event.preventDefault();
+      const genre = event.currentTarget.dataset.genre;
+      inputs.forEach((del) => {
+        del.removeAttribute('checked');
+      })
+      playlistItems.forEach((del) => {
+        del.classList.remove('showing');
+      })
+      document.querySelector(`[data-genre="${genre}"]`).setAttribute('checked','');
+      document.querySelectorAll(`[data-target-genre="${genre}"]`).forEach((e) => {
+        e.classList.add('showing');
+      })
     })
   })
 
@@ -283,15 +274,17 @@ addEventListener('DOMContentLoaded', function () {
   // filter broadcasts
   let broadSelect = document.querySelector('.broadcasts__select'),
     broadcastsItems = document.querySelectorAll('.broadcasts__item');
-  broadSelect.addEventListener('change', function () {
-    const name = broadSelect.options[broadSelect.selectedIndex].getAttribute('value');
-    broadcastsItems.forEach(function (delLastActive) {
-      delLastActive.classList.remove('is-active');
+  if (broadSelect) {
+    broadSelect.addEventListener('change', function () {
+      const name = broadSelect.options[broadSelect.selectedIndex].getAttribute('value');
+      broadcastsItems.forEach(function (delLastActive) {
+        delLastActive.classList.remove('is-active');
+      })
+      document.querySelectorAll(`[data-target-broadcast="${name}"]`).forEach(function (el) {
+        el.classList.add('is-active');
+      })
     })
-    document.querySelectorAll(`[data-target-broadcast="${name}"]`).forEach(function (el) {
-      el.classList.add('is-active');
-    })
-  })
+  }
 
   // validation form
   let form = document.querySelector('.about__form'),
@@ -301,9 +294,11 @@ addEventListener('DOMContentLoaded', function () {
     inputCheckbox = document.querySelector('.js-input-checkbox'),
     errBlocks = document.querySelectorAll('.form__error');
 
-  inputCheckbox.addEventListener('click', function () {
-    inputCheckbox.closest('.about__check').classList.toggle('is-active');
-  })
+  if (inputCheckbox) {
+    inputCheckbox.addEventListener('click', function () {
+      inputCheckbox.closest('.about__check').classList.toggle('is-active');
+    })
+  }
 
   function validateEmail(email) {
     let regular = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -315,119 +310,168 @@ addEventListener('DOMContentLoaded', function () {
     return reg.test(String(name).toLocaleLowerCase());
   }
 
-  form.onsubmit = function () {
-    let emailVal = inputEmail.value,
-      nameVal = inputName.value,
-      emptyInputs = Array.from(formInputs).filter(input => input.value === '');
+  if (form) {
+    form.onsubmit = function () {
+      let emailVal = inputEmail.value,
+        nameVal = inputName.value,
+        emptyInputs = Array.from(formInputs).filter(input => input.value === '');
 
 
-    if (!validateName(nameVal)) {
-      inputName.classList.add('error-name');
-      document.querySelector('.js-input.error-name + .error-name').innerHTML = 'Имя содержит только русские буквы';
-      return false;
-    } else {
-      inputName.classList.remove('error-name');
-    }
-
-    if (!inputCheckbox.closest('.about__check').classList.contains('is-active')) {
-      inputCheckbox.closest('.about__check').classList.add('error-mark');
-      document.querySelector('.error-checkbox').innerHTML = 'Не отмечена обработка персональных данных';
-      return false;
-    } else {
-      inputCheckbox.closest('.about__check').classList.remove('error-mark');
-    }
-
-
-    formInputs.forEach(function (input) {
-      if (input.value === '') {
-        input.classList.add('error');
-        errBlocks.forEach(function (el) {
-          el.innerHTML = 'Заполните все обязательные поля';
-        })
+      if (!validateName(nameVal)) {
+        inputName.classList.add('error-name');
+        document.querySelector('.js-input.error-name + .error-name').innerHTML = 'Имя содержит только русские буквы';
         return false;
       } else {
-        input.classList.remove('error');
+        inputName.classList.remove('error-name');
       }
-    })
 
-    if (emptyInputs.length !== 0) {
-      return false;
-    }
+      if (!inputCheckbox.closest('.about__check').classList.contains('is-active')) {
+        inputCheckbox.closest('.about__check').classList.add('error-mark');
+        document.querySelector('.error-checkbox').innerHTML = 'Не отмечена обработка персональных данных';
+        return false;
+      } else {
+        inputCheckbox.closest('.about__check').classList.remove('error-mark');
+      }
 
-    if (!validateEmail(emailVal)) {
-      inputEmail.classList.add('error-val');
-      document.querySelector('.error-email').innerHTML = 'Неверно заполнен eMail';
-      return false;
-    } else {
-      input.classList.remove('error-val');
+
+      formInputs.forEach(function (input) {
+        if (input.value === '') {
+          input.classList.add('error');
+          errBlocks.forEach(function (el) {
+            el.innerHTML = 'Заполните все обязательные поля';
+          })
+          return false;
+        } else {
+          input.classList.remove('error');
+        }
+      })
+
+      if (emptyInputs.length !== 0) {
+        return false;
+      }
+
+      if (!validateEmail(emailVal)) {
+        inputEmail.classList.add('error-val');
+        document.querySelector('.error-email').innerHTML = 'Неверно заполнен eMail';
+        return false;
+      } else {
+        input.classList.remove('error-val');
+      }
     }
   }
 
   // genre swiper
-  let genreList = document.querySelector('.playlist__genre-list'),
+  let swipe = document.querySelectorAll('.swipe'),
     x1 = null,
     y1 = null,
     posX = 0;
 
-  genreList.addEventListener('touchstart', handleTouchStart, false);
-  genreList.addEventListener('touchmove', handleTouchMove, false);
-  genreList.addEventListener('mousedown', (e) => {
-    handleTouchStart(e, false);
-  });
-  genreList.addEventListener('mouseover', (e) => {
-    handleTouchMove(e, false);
-  })
+  if (swipe.length > 0) {
+    const swipersMedia = Array.from(swipe).filter(function (item, index, self) {
+      return item.dataset.size.split(',')[0];
+    });
 
-  function handleTouchStart(event, mobile = true) {
-    if (mobile) {
-      const firstTouch = event.touches[0];
+    if (swipersMedia.length > 0) {
+      const breakpointsArray = []; // contains media info
+      swipersMedia.forEach(item => {
+        const params = item.dataset.size;
+        const breakpoint = {};
+        const paramsArray = params.split(",");
+        breakpoint.value = paramsArray[0];
+        breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : "max";
+        breakpoint.item = item;
+        breakpointsArray.push(breakpoint);
+      });
 
-      x1 = firstTouch.clientX;
-      y1 = firstTouch.clientY;
-    } else {
-      x1 = event.clientX;
-      y1 = event.clientY;
+      // get unique breakpoints
+      let mediaQueries = breakpointsArray.map(function (item) {
+        return "(" + item.type + "-width: " + item.value + "px)," + item.value + "," + item.type;
+      });
+
+      mediaQueries = mediaQueries.filter(function (item, index, self) {
+        return self.indexOf(item) === index;
+      });
+
+      // Working with each breakpoints
+      mediaQueries.forEach(breakpoint => {
+        const paramsArray = breakpoint.split(",");
+        const mediaBreakpoint = paramsArray[1];
+        const mediaType = paramsArray[2];
+        const matchMedia = window.matchMedia(paramsArray[0]);
+
+        // Objects with the right conditions
+        const swipe = breakpointsArray.filter(function (item) {
+          if (item.value === mediaBreakpoint && item.type === mediaType) {
+            return true;
+          }
+        });
+        // Event
+        matchMedia.addEventListener('change', () => {
+          initSwiper(swipe, matchMedia);
+        });
+      })
+    }
+    function initSwiper(swipe, matchMedia = false) {
+      if (matchMedia.matches) {
+        swipe[0].item.addEventListener('touchstart', handleTouchStart, false)
+        swipe[0].item.addEventListener('touchmove', handleTouchMove, false)
+      } else {
+        swipe[0].item.removeEventListener('touchstart', handleTouchStart, false)
+        swipe[0].item.removeEventListener('touchmove', handleTouchMove, false)
+      }
+    }
+
+    function handleTouchStart(event, mobile = true) {
+      if (mobile) {
+        const firstTouch = event.touches[0];
+
+        x1 = firstTouch.clientX;
+        y1 = firstTouch.clientY;
+      }
+    }
+
+    function handleTouchMove(event, mobile = true) {
+      if (!x1 || !y1) {
+        return false;
+      }
+      let width = event.target.closest('.swipe').offsetWidth
+      if (mobile) {
+        let x2 = event.touches[0].clientX;
+        let y2 = event.touches[0].clientY;
+        let xDifferent = x2 - x1;
+        let yDiffrenet = y2 - y1;
+
+        if (Math.abs(xDifferent) > Math.abs(yDiffrenet)) {
+          // right - left
+          if (xDifferent > 0) {
+            posX < width ? posX = 0 : posX += 180;
+            event.target.closest('.swipe').style.transform = `translate3d(${(posX) + 'px'}, 0px, 0px)`;
+          } else {
+            Math.abs(posX) > width - 180 ? posX = 0 : posX -= 180;
+            event.target.closest('.swipe').style.transform = `translate3d(${(posX) + 'px'}, 0px, 0px)`;
+          }
+        }
+      } else {
+        let x2 = event.clientX,
+          y2 = event.clientY,
+          xDifferent = x2 - x1,
+          yDiffrenet = y2 - y1;
+        if (Math.abs(xDifferent) > Math.abs(yDiffrenet)) {
+          if (xDifferent > 0) {
+            posX > 179 ? posX = 0 : posX += 180;
+            event.target.closest('.swipe').style.transform = `translate3d(${(posX) + 'px'}, 0px, 0px)`;
+          } else {
+            posX < -1259 ? posX = 0 : posX -= 180;
+            event.target.closest('.swipe').style.transform = `translate3d(${(posX) + 'px'}, 0px, 0px)`;
+          }
+        }
+      }
+      x1 = null;
+      y1 = null;
     }
   }
 
-  function handleTouchMove(event, mobile = true) {
-    if (!x1 || !y1) {
-      return false;
-    }
-    if (mobile) {
-      let x2 = event.touches[0].clientX;
-      let y2 = event.touches[0].clientY;
-      let xDifferent = x2 - x1;
-      let yDiffrenet = y2 - y1;
 
-      if (Math.abs(xDifferent) > Math.abs(yDiffrenet)) {
-        // right - left
-        if (xDifferent > 0) {
-          posX > 179 ? posX = 0 : posX += 180;
-          genreList.style.transform = `translate3d(${(posX) + 'px'}, 0px, 0px)`;
-        } else {
-          posX < -1259 ? posX = 0 : posX -= 180;
-          genreList.style.transform = `translate3d(${(posX) + 'px'}, 0px, 0px)`;
-        }
-      }
-    } else {
-      let x2 = event.clientX,
-        y2 = event.clientY,
-        xDifferent = x2 - x1,
-        yDiffrenet = y2 - y1;
-      if (Math.abs(xDifferent) > Math.abs(yDiffrenet)) {
-        if (xDifferent > 0) {
-          posX > 179 ? posX = 0 : posX += 180;
-          genreList.style.transform = `translate3d(${(posX) + 'px'}, 0px, 0px)`;
-        } else {
-          posX < -1259 ? posX = 0 : posX -= 180;
-          genreList.style.transform = `translate3d(${(posX) + 'px'}, 0px, 0px)`;
-        }
-      }
-    }
-    x1 = null;
-    y1 = null;
-  }
 
   // burger
   let burgerBtn = document.querySelector('.header__burger-btn');
@@ -455,12 +499,136 @@ addEventListener('DOMContentLoaded', function () {
   spoilerBtn.addEventListener('click', () => {
     if (!spoilerBtn.classList.contains('is-open')) {
       spoilerBtn.classList.add('is-open');
+      spoilerBtn.closest('.header__bottom').classList.add('back');
     } else {
-      document.querySelector('.live-list').style.transform = 'translateY(-1000px)'
+      document.querySelector('.live-list').style.transform = 'translateY(-1000px)';
+      spoilerBtn.closest('.header__bottom').classList.remove('back');
       setTimeout(() => {
         spoilerBtn.classList.remove('is-open');
-        document.querySelector('.live-list').style.transform = 'translateY(0px)'
+        document.querySelector('.live-list').style.transform = 'translateY(0px)';
       }, 500);
     }
   })
+
+  // popup`s
+  const populLinks = document.querySelectorAll('.popup-link'),
+    body = document.querySelector('body');
+  let unlock = true;
+  const timeout = 800;
+
+  if (populLinks.length > 0) {
+    for (let index = 0; index < populLinks.length; index++) {
+      const popupLink = populLinks[index];
+      popupLink.addEventListener('click', (e) => {
+        const popupName = popupLink.getAttribute('href').replace('#', '');
+        const currentPopup = document.getElementById(popupName);
+        popupOpen(currentPopup);
+        e.preventDefault();
+      });
+    }
+  }
+
+  const popupCloseBtn = document.querySelectorAll('.close-popup');
+  if (popupCloseBtn.length > 0) {
+    for (let index = 0; index < popupCloseBtn.length; index++) {
+      const el = popupCloseBtn[index];
+      el.addEventListener('click', (e) => {
+        popupClose(el.closest('.popup'));
+        e.preventDefault();
+      });
+    }
+  }
+
+  function popupOpen(currentPopup) {
+    if (currentPopup && unlock) {
+      const popupActive = document.querySelector('.popup.is-open');
+      popupActive ? popupClose(popupActive, false) : bodyLock();
+      currentPopup.classList.add('is-open');
+      currentPopup.addEventListener('click', (e) => {
+        !e.target.closest('.popup__content') ? popupClose(e.target.closest('.popup')) : false;
+      })
+    }
+  }
+
+  function popupClose(popupActive, doUnlock = true) {
+    if (unlock) {
+      popupActive.classList.remove('is-open');
+      doUnlock ? bodyUnLock() : false;
+    }
+  }
+
+  function bodyLock() {
+    const lockPaddingValue = window.innerWidth - document.querySelector('.main-page').offsetWidth + 'px';
+    body.style.paddingRight = lockPaddingValue;
+    body.classList.add('is-lock');
+
+    unlock = false;
+    setTimeout(() => {
+      unlock = true;
+    }, timeout);
+  }
+
+  function bodyUnLock() {
+    setTimeout(() => {
+      body.style.paddingRight = '0px';
+      body.classList.remove('is-lock');
+    }, timeout);
+
+    unlock = false;
+    setTimeout(() => {
+      unlock = true;
+    }, timeout);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 27) {
+      const popupActive = document.querySelector('.popup.is-open');
+      popupClose(popupActive);
+    }
+  })
+
+
+
+  // MailForm
+  const formMail = document.getElementById('form');
+  if (formMail) {
+    formMail.addEventListener('submit', formSend);
+
+    async function formSend(e) {
+      e.preventDefault();
+
+      let formData = new FormData(formMail);
+      let response = await fetch('sendmail.php', {
+        method: 'POST',
+        body: formData
+      });
+
+      formMail.classList.add('is-sending');
+      if (response.ok) {
+        let result = await response.json();
+        alert(result.message);
+        formMail.reset();
+        formMail.classList.remove('is-sending');
+      } else {
+        alert('Ошибка');
+        formMail.classList.remove('is-sending');
+      }
+    }
+  }
+
+  /*grid page*/
+  let gridBtn = document.querySelectorAll('.grid-btn');
+  if (gridBtn.length > 0) {
+    gridBtn.forEach(function (e) {
+      e.addEventListener('click', (click) => {
+        gridBtn.forEach(function (del) {
+          del.classList.remove('is-active');
+        })
+        if (click.target.classList.contains('grid-btn__time')) {
+          click.target.closest('.grid-btn').classList.add('is-active');
+        }
+        click.target.classList.add('is-active');
+      })
+    })
+  }
 })
