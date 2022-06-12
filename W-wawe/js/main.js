@@ -1,4 +1,6 @@
 addEventListener('DOMContentLoaded', function () {
+/*
+аутлайн на подкаст паузы*/
   // search-header
   let headerNav = document.querySelector('.header__nav'),
     searchBtn = document.querySelector('.nav__btn-search');
@@ -28,6 +30,16 @@ addEventListener('DOMContentLoaded', function () {
       initAccordion(accordionRegular);
     }
   }
+
+  const titles = document.querySelectorAll('.accordion__title');
+  titles.forEach((e) => {
+    e.addEventListener('keypress', (event) => {
+      if (event.which === 13) {
+        setAccordionAction(e, true);
+      }
+    })
+  })
+
   // Initialization accordion
   function initAccordion(accordionTitlesArray, matchMedia = false) {
     accordionTitlesArray.forEach(block => {
@@ -50,7 +62,6 @@ addEventListener('DOMContentLoaded', function () {
     if (accodrionTitles.length > 0) {
       accodrionTitles.forEach(accodrionTitle => {
         if (hideAccodrionBody) {
-          accodrionTitle.removeAttribute('tabindex');
           if (!accodrionTitle.classList.contains('is-active')) {
             accodrionTitle.nextElementSibling.hidden = true;
           } else {
@@ -62,10 +73,19 @@ addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function setAccordionAction(e) {
-    const el = e.target;
-    if (el.hasAttribute('data-title-accordion') || el.closest(`[data-title-accordion]`)) {
-      const accordionTitle = el.hasAttribute('data-title-accordion') ? el : el.closest(`[data-title-accordion]`);
+  function getE(e, i = false) {
+    if (!i) {
+      const el = e.target;
+      return el;
+    } else {
+      const el = e;
+      return el;
+    }
+  }
+
+  function setAccordionAction(e, i = false) {
+    if (getE(e, i).hasAttribute('data-title-accordion') || getE(e, i).closest(`[data-title-accordion]`)) {
+      const accordionTitle = getE(e, i).hasAttribute('data-title-accordion') ? getE(e, i) : getE(e, i).closest(`[data-title-accordion]`);
       const parentBlock = accordionTitle.closest(`[data-accordion]`);
       const bodyBlock = accordionTitle.nextElementSibling;
       const oneAccordion = bodyBlock.closest(`[data-one-accordion]`) ? true : false;
@@ -84,7 +104,6 @@ addEventListener('DOMContentLoaded', function () {
         }
         slideToggle(accordionTitle.nextElementSibling, 500);
       }
-      e.preventDefault();
     }
   }
 
@@ -470,6 +489,17 @@ addEventListener('DOMContentLoaded', function () {
       y1 = null;
     }
   }
+
+  let genreLabels = document.querySelectorAll('.genre-list__label');
+  genreLabels.forEach((e) => {
+    e.addEventListener('click', (event) => {
+      genreLabels.forEach((del) => {
+        del.classList.remove('selected');
+      })
+      !event.target.closest('.genre-list__label').classList.contains('selected') ?
+      event.target.closest('.genre-list__label').classList.add('selected') : event.target.closest('.genre-list__label').classList.remove('selected');
+    })
+  })
 
 
 

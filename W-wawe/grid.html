@@ -23,13 +23,13 @@
       </picture>
     </a>
     <nav class="nav header__nav flex">
-      <button class="btn-reset header__burger-btn hidden">
-        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <button class="btn-reset header__burger-btn burger-btn hidden">
+        <svg class="burger-btn__open" width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="24" height="3" rx="1.5" />
           <rect y="21" width="24" height="3" rx="1.5" />
           <rect y="11" width="24" height="3" rx="1.5" />
         </svg>
-        <svg class="hidden" width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="burger-btn__close hidden" width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="4.5752" y="2.95406" width="24" height="3" rx="1.5" transform="rotate(45 4.5752 2.95406)" />
           <rect x="21.5459" y="5.07538" width="24" height="3" rx="1.5" transform="rotate(135 21.5459 5.07538)" />
         </svg>
@@ -62,8 +62,8 @@
         </li>
       </ul>
       <div class="nav__right-side flex">
-        <button class="btn-reset nav__btn-search" aria-label="Поиск">
-          <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button class="btn-reset nav__btn-search btn-search" aria-label="Поиск">
+          <svg class="btn-search__icon" width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -71,26 +71,26 @@
           </svg>
         </button>
         <input type="search" placeholder="Поиск по сайту" class="nav__search hidden" aria-label="Поле поиска">
-        <a href="#modal_01" class="btn-reset nav__btn-login popup-link flex" aria-label="Вход в личный кабинет">
-          <svg width="19" height="18" viewbox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.5 1.5L2 5.25L9.5 9L17 5.25L9.5 1.5Z" stroke-width="1.5" stroke-linecap="round"
+        <a href="#modal_01" class="btn-reset nav__btn-login btn-login popup-link flex" aria-label="Вход в личный кабинет">
+          <svg class="btn-login__icon" width="19" height="18" viewbox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="btn-login__icon-path" d="M9.5 1.5L2 5.25L9.5 9L17 5.25L9.5 1.5Z" stroke-width="1.5" stroke-linecap="round"
               stroke-linejoin="round" />
-            <path d="M2 12.75L9.5 16.5L17 12.75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M2 9L9.5 12.75L17 9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path class="btn-login__icon-path" d="M2 12.75L9.5 16.5L17 12.75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path class="btn-login__icon-path" d="M2 9L9.5 12.75L17 9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          <span>Вход</span>
+          <span class="btn-login__text">Вход</span>
         </a>
       </div>
     </nav>
     <div class="header__bottom header-bottom flex">
       <div class="header-bottom__container flex">
-        <div class="header__spoiler-menu spoiler-menu flex hidden" aria-roledescription="button"
+        <div tabindex="0" class="header__spoiler-menu spoiler-menu flex hidden" aria-roledescription="button"
           aria-label="Спойлер меню">
           <svg class="spoiler-menu__icon" width="15" height="15" viewbox="0 0 15 15" fill="none"
             xmlns="http://www.w3.org/2000/svg">
-            <circle cx="7.5" cy="7.5" r="7.5" />
-            <path d="M12 7.00014V8.00014H3V7.00014H12Z" fill="white" />
-            <path d="M8 12.0001H7L7 3.00014L8 3.00014L8 12.0001Z" fill="white" />
+            <circle class="spoiler-menu__icon-circle" cx="7.5" cy="7.5" r="7.5" />
+            <path class="spoiler-menu__icon-path" d="M12 7.00014V8.00014H3V7.00014H12Z" fill="white" />
+            <path class="spoiler-menu__icon-path" d="M8 12.0001H7L7 3.00014L8 3.00014L8 12.0001Z" fill="white" />
           </svg>
           <p class="spoiler-menu__title">Что в эфире?</p>
         </div>
@@ -129,17 +129,16 @@
         <ul class="live-list list-reset flex" aria-label="Список онлайн эфира">
           <li class="live__item flex">
             <audio class="live-list__audio-prev" src="audio/JIZZZY_Rose.mp3"></audio>
-            <button class="btn-reset live-list__btn-play" data-play="prev" aria-label="Предыдущее в эфире">
-              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12 2C6.475 2 2 6.475 2 12C2 17.525 6.475 22 12 22C17.525 22 22 17.525 22 12C22 6.475 17.525 2 12 2ZM10 16.5V7.5L16 12L10 16.5Z" />
+            <button class="btn-reset live-list__btn-play btn-play-header" data-play="prev" aria-label="Предыдущее в эфире">
+              <svg class="btn-play-header__icon" width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="btn-play-header__icon-path" d="M12 2C6.475 2 2 6.475 2 12C2 17.525 6.475 22 12 22C17.525 22 22 17.525 22 12C22 6.475 17.525 2 12 2ZM10 16.5V7.5L16 12L10 16.5Z" />
               </svg>
-              <svg class="hidden" width="24" height="24" viewbox="0 0 24 24" fill="none"
+              <svg class="btn-pause-header__icon hidden" width="24" height="24" viewbox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path
+                <path class="btn-pause-header__icon-path"
                   d="M12 2C6.475 2 2 6.475 2 12C2 17.525 6.475 22 12 22C17.525 22 22 17.525 22 12C22 6.475 17.525 2 12 2Z" />
-                <rect x="9" y="8" width="2" height="8" rx="1" fill="white" />
-                <rect x="13" y="8" width="2" height="8" rx="1" fill="white" />
+                <rect class="btn-pause-header__icon-rect" x="9" y="8" width="2" height="8" rx="1" fill="white" />
+                <rect class="btn-pause-header__icon-rect" x="13" y="8" width="2" height="8" rx="1" fill="white" />
               </svg>
             </button>
             <div class="live-list__wrapper flex">
@@ -153,17 +152,17 @@
           </li>
           <li class="live__item flex">
             <audio class="live-list__audio-online" src="audio/LUCAVEROS_A_ya_pel_im_o_lyubvi.mp3"></audio>
-            <button class="btn-reset live-list__btn-play" data-play="online" aria-label="Онлайн песня">
-              <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
+            <button class="btn-reset live-list__btn-play btn-play-header" data-play="online" aria-label="Онлайн песня">
+              <svg class="btn-play-header__icon" width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="btn-play-header__icon-path"
                   d="M12 2C6.475 2 2 6.475 2 12C2 17.525 6.475 22 12 22C17.525 22 22 17.525 22 12C22 6.475 17.525 2 12 2ZM10 16.5V7.5L16 12L10 16.5Z" />
               </svg>
-              <svg class="hidden" width="24" height="24" viewbox="0 0 24 24" fill="none"
+              <svg class="btn-pause-header__icon hidden" width="24" height="24" viewbox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
-                <path
+                <path class="btn-pause-header__icon-path"
                   d="M12 2C6.475 2 2 6.475 2 12C2 17.525 6.475 22 12 22C17.525 22 22 17.525 22 12C22 6.475 17.525 2 12 2Z" />
-                <rect x="9" y="8" width="2" height="8" rx="1" fill="white" />
-                <rect x="13" y="8" width="2" height="8" rx="1" fill="white" />
+                <rect class="btn-paust-header__icon-rect" x="9" y="8" width="2" height="8" rx="1" fill="white" />
+                <rect class="btn-paust-header__icon-rect" x="13" y="8" width="2" height="8" rx="1" fill="white" />
               </svg>
             </button>
             <div class="live-list__wrapper flex">
@@ -230,8 +229,8 @@
         </ul>
         <ul class="grid__cards-list cards-list list-reset flex">
           <li class="card__item">
-            <a href="#" class="card__link flex">
-              <img src="img/grid-avatar-1.jpg" alt="" class="card__img">
+            <a href="#" class="card__link flex" aria-label="Ночной эфир. Ведущий Дмитрий Гутенберг">
+              <img src="img/grid-avatar-1.jpg" alt="Ночной эфир" class="card__img">
               <div class="card__content">
                 <h4 class="fourth-title card__title">Ночной эфир</h4>
                 <p class="card__sub-title">Ведущий:</p>
@@ -240,8 +239,8 @@
             </a>
           </li>
           <li class="card__item">
-            <a href="#" class="card__link flex">
-              <img src="img/grid-avatar-2.jpg" alt="" class="card__img">
+            <a href="#" class="card__link flex" aria-label="Доброе утро! Ведущий Пётр Дмитриевский">
+              <img src="img/grid-avatar-2.jpg" alt="Доброе утро!" class="card__img">
               <div class="card__content flex">
                 <h4 class="fourth-title card__title">Доброе утро!</h4>
                 <p class="card__sub-title">Ведущий:</p>
@@ -250,8 +249,8 @@
             </a>
           </li>
           <li class="card__item">
-            <a href="#" class="card__link flex">
-              <img src="img/grid-avatar-3.jpg" alt="" class="card__img">
+            <a href="#" class="card__link flex" aria-label="Графомания. Ведущий Дмитрий Гутенберг">
+              <img src="img/grid-avatar-3.jpg" alt="Графомания td" class="card__img">
               <div class="card__content flex">
                 <h4 class="fourth-title card__title">Графомания td.</h4>
                 <p class="card__sub-title">Ведущий:</p>
@@ -260,8 +259,8 @@
             </a>
           </li>
           <li class="card__item">
-            <a href="#" class="card__link flex">
-              <img src="img/grid-avatar-4.jpg" alt="" class="card__img">
+            <a href="#" class="card__link flex" aria-label="Регистр. Ведущий Пётр Дмитриевский">
+              <img src="img/grid-avatar-4.jpg" alt="Регистр" class="card__img">
               <div class="card__content flex">
                 <h4 class="fourth-title card__title">Регистр</h4>
                 <p class="card__sub-title">Ведущий:</p>
@@ -270,8 +269,8 @@
             </a>
           </li>
           <li class="card__item">
-            <a href="#" class="card__link flex">
-              <img src="img/grid-avatar-5.jpg" alt="" class="card__img">
+            <a href="#" class="card__link flex" aria-label="Дневной эфир. Ведущая Татьяна Флеганова">
+              <img src="img/grid-avatar-5.jpg" alt="Дневной эфир" class="card__img">
               <div class="card__content flex">
                 <h4 class="fourth-title card__title">Дневной эфир</h4>
                 <p class="card__sub-title">Ведущий:</p>
@@ -280,8 +279,8 @@
             </a>
           </li>
           <li class="card__item">
-            <a href="#" class="card__link flex">
-              <img src="img/grid-avatar-6.jpg" alt="" class="card__img">
+            <a href="#" class="card__link flex" aria-label="Музыка. Ведущий Пётр Дмитриевский">
+              <img src="img/grid-avatar-6.jpg" alt="Музыка" class="card__img">
               <div class="card__content flex">
                 <h4 class="fourth-title card__title">Музыка</h4>
                 <p class="card__sub-title">Ведущий:</p>
@@ -290,8 +289,8 @@
             </a>
           </li>
           <li class="card__item">
-            <a href="#" class="card__link flex">
-              <img src="img/grid-avatar-7.jpg" alt="" class="card__img">
+            <a href="#" class="card__link flex" aria-label="Как так? Ведущая Анна Васильевна">
+              <img src="img/grid-avatar-7.jpg" alt="Как так?" class="card__img">
               <div class="card__content flex">
                 <h4 class="fourth-title card__title">Как так?</h4>
                 <p class="card__sub-title">Ведущий:</p>
@@ -300,8 +299,8 @@
             </a>
           </li>
           <li class="card__item">
-            <a href="#" class="card__link flex">
-              <img src="img/grid-avatar-8.jpg" alt="" class="card__img">
+            <a href="#" class="card__link flex" aria-label="Новости. Ведущий Пётр Дмитриевский">
+              <img src="img/grid-avatar-8.jpg" alt="Новости" class="card__img">
               <div class="card__content flex">
                 <h4 class="fourth-title card__title">Новости</h4>
                 <p class="card__sub-title">Ведущий:</p>
@@ -310,8 +309,8 @@
             </a>
           </li>
           <li class="card__item break">
-            <a href="#" class="card__link flex">
-              <img src="img/grid-break.jpg" alt="" class="card__img">
+            <a href="#" class="card__link flex" aria-label="Перерыв в эфире">
+              <img src="img/grid-break.jpg" alt="Перерыв" class="card__img">
               <div class="card__content flex">
                 <h4 class="fourth-title card__title">Перерыв</h4>
                 <p class="card__sub-title">1</p>
@@ -366,22 +365,22 @@
       <div class="footer__right-side">
         <ul class="footer-nav__list footer-nav-list list-reset" aria-label="Навигационное меню">
           <li class="footer-nav__item">
-            <a href="#podcasts" class="footer-nav__link" aria-label="Элемент навигационного меню Подкасты">
+            <a href="index.html#podcasts" class="footer-nav__link" aria-label="Элемент навигационного меню Подкасты">
               Подкасты
             </a>
           </li>
           <li class="footer-nav__item">
-            <a href="#broadcasts" class="footer-nav__link" aria-label="Элемент навигационного меню Передачи">
+            <a href="index.html#broadcasts" class="footer-nav__link" aria-label="Элемент навигационного меню Передачи">
               Передачи
             </a>
           </li>
           <li class="footer-nav__item">
-            <a href="#guests" class="footer-nav__link" aria-label="Элемент навигационного меню Гости">
+            <a href="index.html#guests" class="footer-nav__link" aria-label="Элемент навигационного меню Гости">
               Гости
             </a>
           </li>
           <li class="footer-nav__item">
-            <a href="#playlist" class="footer-nav__link" aria-label="Элемент навигационного меню Плейлисты">
+            <a href="index.html#playlist" class="footer-nav__link" aria-label="Элемент навигационного меню Плейлисты">
               Плейлисты
             </a>
           </li>
@@ -391,7 +390,7 @@
             </a>
           </li>
           <li class="footer-nav__item">
-            <a href="#about" class="footer-nav__link" aria-label="Элемент навигационного меню О нас">
+            <a href="index.html#about" class="footer-nav__link" aria-label="Элемент навигационного меню О нас">
               О&nbsp;нас
             </a>
           </li>

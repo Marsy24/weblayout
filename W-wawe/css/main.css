@@ -396,6 +396,7 @@ body {
 
 .spoiler-menu__icon {
   margin-right: 5px;
+  transition: transform .3s ease-in-out 0s;
 }
 
 .spoiler-menu__icon-circle {
@@ -682,10 +683,13 @@ body {
   height: 48px;
   margin-top: 10px;
   color: var(--gray);
-  outline: none;
   -webkit-transition: color .3s ease-in-out;
   -o-transition: color .3s ease-in-out;
   transition: color .3s ease-in-out;
+}
+
+.podcasts-list__btn, .podcasts-list-btn__icon, .podcasts-list-btn-pause__icon {
+  outline: none;
 }
 
 .podcasts-list-btn-pause__icon, .podcasts-list-btn__icon {
@@ -1162,6 +1166,7 @@ body {
   border-bottom: 1px solid #A1A6B4;
   font-size: var(--biggerFz);
   color: white;
+  outline: none;
   -webkit-transition: color .15s ease-in-out;
   -o-transition: color .15s ease-in-out;
   transition: color .15s ease-in-out;
@@ -1191,6 +1196,18 @@ body {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+
+.accordion-title.is-active {
+  color: var(--primary-light)
+}
+
+.accordion-title.is-active .accordion-title__icon-circle {
+  stroke: var(--primary-light);
+}
+
+.accordion__title:focus-visible {
+  background: rgba(170, 157, 250, 0.3);
 }
 
 .accordion__panel[hidden] {
@@ -1343,6 +1360,25 @@ body {
   font-size: var(--standartFz);
   font-weight: 500;
   color: var(--primary-light);
+  transition: color .3s ease-in-out 0s, background .3s ease-in-out 0s, border .3s ease-in-out 0s;
+}
+
+/*hover focus active guestsLink*/
+.guests__link:focus-visible, .guests__link:hover, .guests__link:active {
+  color: white;
+}
+.guests__link:focus-visible {
+  background: var(--purple);
+  border-color: var(--purple);
+}
+
+.guests__link:hover {
+  background: var(--primary-light);
+}
+
+.guests__link:active {
+  background: var(--primary-shade);
+  border-color: var(--primary-shade);
 }
 
 .guests__content-gag {
@@ -1907,7 +1943,7 @@ body {
 /*Errors*/
 .form__error {
   font-size: var(--smallFz);
-  color: red;
+  color: #FF6F6F;
 }
 
 .js-input.error+.form__error {
@@ -1940,6 +1976,11 @@ body {
   animation: showingErrors .40s ease-in-out 0s 1 forwards normal;
 }
 
+.js-input.error,
+.js-input.error-val,
+.about__check.error-mark {
+  border-color: #FF6F6F;
+}
 
 @-webkit-keyframes showingErrors {
   0% {
@@ -2102,6 +2143,7 @@ body {
   color: var(--gray);
   border: 2px solid var(--light-color);
   border-radius: var(--bgBorderRadius);
+  outline: none;
   font-size: var(--standartFz);
   line-height: 16px;
   font-weight: 700;
@@ -2120,6 +2162,7 @@ body {
 .grid__btn.is-active {
   background-color: var(--purple);
   color: white;
+  border-color: var(--purple);
 }
 
 .grid__item:not(:last-child) {
@@ -2140,6 +2183,7 @@ body {
   flex-basis: calc(100% - 65px);
   padding: 21px 0 22px 14px;
   border: 1px solid var(--light-color);
+  transition: background .3s ease-in-out 0s;
 }
 
 .fourth-title.card__title {
@@ -2164,6 +2208,10 @@ body {
   color: var(--gray);
 }
 
+.card__title, .card__sub-title {
+  transition: color .3s ease-in-out 0s;
+}
+
 .card__item.break .card__content {
   justify-content: center;
 }
@@ -2177,6 +2225,70 @@ body {
   line-height: 1;
   font-weight: 500;
   color: var(--gray);
+}
+
+
+
+/*hover focus active grid page*/
+.card__link {
+  position: relative;
+  transition: opacity .3s ease-in-out 0s;
+}
+
+.card__link::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 2.3%;
+  transition: transform .3s ease-in-out 0s;
+}
+
+.card__link:focus-visible, .card__link:hover, .card__link:active {
+  opacity: .8;
+}
+
+.card__link:focus-visible::before, .card__link:hover::before {
+  background-image: url('../img/play_btn--hover-focus.svg');
+  background-repeat: no-repeat;
+  background-size: 48px 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.card__link:active::before {
+  transform: scale(1.1);
+}
+
+.card__link:focus-visible .card__content * {
+  color: black;
+}
+
+.card__link:hover .card__content *, .card__link:active .card__content *{
+  color: white;
+}
+
+.card__link:focus-visible .card__content {
+  background-color: var(--primary-light);
+}
+
+.card__link:hover .card__content {
+  background-color: var(--purple);
+}
+
+.card__link:active .card__content {
+  background-color: var(--primary-shade);
+}
+
+.grid__btn:focus-visible:not(.is-active) {
+  color: white;
+  background-color: var(--primary-light);
+  border-color: var(--purple);
+}
+
+.grid__btn:hover {
+  color: white;
+  background-color: var(--primary-light);
+  border-color: var(--primary-light);
 }
 
 /* hover, focus, active: menu-list__link/nav-list__link/footer-nav__link */
@@ -2665,6 +2777,15 @@ body.is-lock {
   position: absolute;
   top: 30px;
   right: 30px;
+  color: var(--gray);
+}
+
+.close-popup {
+  transition: color .3s ease-in-out;
+}
+
+.close-popup__icon-cicrle, .close-popup__icon-path {
+  stroke: currentColor;
 }
 
 .popup__body {
@@ -2750,6 +2871,8 @@ body.is-lock {
   border-radius: 40px;
   background-color: var(--purple);
   font-weight: 500;
+  outline: none;
+  transition: background .3s ease-in-out 0s, color .3s ease-in-out 0s, outline .3s ease-in-out 0s;
 }
 
 .popup-social-list__link {
@@ -2821,4 +2944,129 @@ body.is-lock {
 /*modal_03*/
 #modal_03 .popup__link {
   color: var(--purple);
+}
+
+#modal_03 .popup-form__btn {
+  max-width: unset;
+}
+
+/*focus hover active modal*/
+.popup__link {
+  position: relative;
+}
+
+#modal_01 .popup__link::before, #modal_03 .popup__link::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid var(--purple);
+  opacity: 0;
+  transition: opacity .3s ease-in-out 0s;
+}
+
+#modal_01 .popup__link::after, #modal_03 .popup__link::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background-color: var(--primary-light);
+  opacity: 0;
+  transition: opacity .3s ease-in-out 0s;
+}
+
+#modal_01 .popup__link:hover::before, #modal_03 .popup__link:hover::before,
+#modal_01 .popup__link:focus-visible::after, #modal_03 .popup__link:focus-visible::after {
+  opacity: 1;
+}
+
+#modal_01 .popup-form__input, #modal_03 .popup-form__input {
+  transition: background .3s ease-in-out 0s, color .3s ease-in-out 0s;
+}
+
+#modal_01 .popup-form__input:focus-visible, #modal_03 .popup-form__input:focus-visible,
+#modal_01 .popup-form__input:hover, #modal_03 .popup-form__input:hover {
+  background: rgba(230, 232, 236, 0.1);
+}
+
+#modal_01 .popup-form__input:focus-visible, #modal_03 .popup-form__input:focus-visible {
+  border-color: var(--purple);
+}
+
+#modal_01 .popup-form__input:active, #modal_03 .popup-form__input:active {
+  color: white;
+  border-color: white;
+}
+
+#modal_01 .popup-form__btn:focus-visible, #modal_03 .popup-form__btn:focus-visible,
+#modal_01 .popup-form__btn:hover, #modal_03 .popup-form__btn:hover {
+  background-color: var(--primary-light);
+}
+
+#modal_01 .popup-form__btn:focus-visible, #modal_03 .popup-form__btn:focus-visible {
+  outline: 2px solid var(--purple);
+}
+
+#modal_01 .popup-form__btn:active, #modal_03 .popup-form__btn:active {
+  background-color: var(--primary-shade);
+}
+
+.close-popup:focus-visible {
+  color: var(--primary-light);
+}
+
+.close-popup:hover {
+  color: var(--purple);
+}
+
+.close-popup:active {
+  color: var(--primary-shade);
+}
+
+.popup-social-list__link:focus-visible .popup-social-list__link-icon-rect {
+  fill: var(--primary-light);
+}
+
+.popup-social-list__link:hover .popup-social-list__link-icon-rect {
+  fill: var(--purple);
+}
+
+.popup-social-list__link:active .popup-social-list__link-icon-rect {
+  fill: var(--primary-shade);
+}
+
+#modal_02 .popup__link::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #F0D288;
+  opacity: 0;
+  transition: opacity .3s ease-in-out 0s;
+}
+
+#modal_02 .popup__link::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background-color: #BB973E;
+  opacity: 0;
+  transition: opacity .3s ease-in-out 0s;
+}
+
+#modal_02 .popup__link:focus-visible::after {
+  opacity: 1;
+}
+
+#modal_02 .popup__link:hover::before {
+  opacity: 1;
 }

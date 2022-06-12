@@ -87,7 +87,7 @@
     </nav>
     <div class="header__bottom header-bottom flex">
       <div class="header-bottom__container flex">
-        <div class="header__spoiler-menu spoiler-menu flex hidden" aria-roledescription="button"
+        <div tabindex="0" class="header__spoiler-menu spoiler-menu flex hidden" aria-roledescription="button"
           aria-label="Спойлер меню">
           <svg class="spoiler-menu__icon" width="15" height="15" viewbox="0 0 15 15" fill="none"
             xmlns="http://www.w3.org/2000/svg">
@@ -1276,7 +1276,7 @@
         </p>
         <div class="guests__bottom flex">
           <div class="guests__accordion" data-accordion data-one-accordion>
-            <h3 class="third-title accordion__title accordion-title is-active" data-title-accordion data-path="bloggers"
+            <h3 tabindex="0" class="third-title accordion__title accordion-title is-active" data-title-accordion data-path="bloggers"
               aria-label="Блоггеры вкладка">
               Блогеры
               <svg class="accordion-title__icon" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1361,7 +1361,7 @@
                 </button>
               </li>
             </ul>
-            <h3 class="third-title accordion__title accordion-title" data-title-accordion data-path="art-critics"
+            <h3 tabindex="0" class="third-title accordion__title accordion-title" data-title-accordion data-path="art-critics"
               aria-label="Арт-критики">
               Арт-критики
               <svg class="accordion-title__icon" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1446,7 +1446,7 @@
                 </button>
               </li>
             </ul>
-            <h3 class="third-title accordion__title accordion-title" data-title-accordion data-path="painters" aria-label="Художники">
+            <h3 tabindex="0" class="third-title accordion__title accordion-title" data-title-accordion data-path="painters" aria-label="Художники">
               Художники
               <svg class="accordion-title__icon" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle class="accordion-title__icon-circle" cx="21" cy="21" r="20" stroke-width="2" />
@@ -1530,7 +1530,7 @@
                 </button>
               </li>
             </ul>
-            <h3 class="third-title accordion__title accordion-title" data-title-accordion data-path="science-people"
+            <h3 tabindex="0" class="third-title accordion__title accordion-title" data-title-accordion data-path="science-people"
               aria-label="Люди науки">
               Люди науки
               <svg class="accordion-title__icon" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1615,7 +1615,7 @@
                 </button>
               </li>
             </ul>
-            <h3 class="third-title accordion__title accordion-title" data-title-accordion data-path="historians" aria-label="Историки">
+            <h3 tabindex="0" class="third-title accordion__title accordion-title" data-title-accordion data-path="historians" aria-label="Историки">
               Историки
               <svg class="accordion-title__icon" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle class="accordion-title__icon-circle" cx="21" cy="21" r="20" stroke-width="2" />
@@ -1699,7 +1699,7 @@
                 </button>
               </li>
             </ul>
-            <h3 class="third-title accordion__title accordion-title" data-title-accordion data-path="philologists"
+            <h3 tabindex="0" class="third-title accordion__title accordion-title" data-title-accordion data-path="philologists"
               aria-label="Филологи">
               Филологи
               <svg class="accordion-title__icon" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2817,9 +2817,9 @@
     <div class="popup__body">
       <div class="popup__content">
         <button class="btn-reset popup__btn-close close-popup">
-          <svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="21" cy="21" r="19.5" stroke="#A1A6B4" stroke-width="3" />
-            <path d="M29.6777 12L12 29.6777M29.6777 29.6777L12 12" stroke="#A1A6B4" stroke-width="3" />
+          <svg class="close-popup__icon" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="close-popup__icon-cicrle" cx="21" cy="21" r="19.5" stroke-width="3" />
+            <path class="close-popup__icon-path" d="M29.6777 12L12 29.6777M29.6777 29.6777L12 12" stroke-width="3" />
           </svg>
         </button>
         <p class="popup__title">Вход</p>
@@ -2838,8 +2838,8 @@
         <ul class="popup__social-list popup-social-list list-reset flex">
           <li class="popup-social-list__item">
             <a href="#" class="popup-social-list__link">
-              <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
+              <svg class="popup-social-list__link-icon" width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="popup-social-list__link-icon-path popup-social-list__link-icon-rect"
                   d="M26.3 36.6666V23.7666H30.6204L31.2666 18.7518H26.3V15.5518C26.3 14.1 26.7037 13.1092 28.7852 13.1092H31.4407V8.62405C30.1552 8.48765 28.8631 8.42151 27.5704 8.42591C23.7426 8.42591 21.1222 10.7629 21.1222 15.0555V18.7518H16.7926V23.7666H21.1222V36.6666H5.18516C4.69402 36.6666 4.223 36.4715 3.87571 36.1243C3.52842 35.777 3.33331 35.3059 3.33331 34.8148V5.18516C3.33331 4.69402 3.52842 4.223 3.87571 3.87571C4.223 3.52842 4.69402 3.33331 5.18516 3.33331H34.8148C35.3059 3.33331 35.777 3.52842 36.1243 3.87571C36.4715 4.223 36.6666 4.69402 36.6666 5.18516V34.8148C36.6666 35.3059 36.4715 35.777 36.1243 36.1243C35.777 36.4715 35.3059 36.6666 34.8148 36.6666H26.3Z"
                   fill="#A1A6B4" />
               </svg>
@@ -2847,9 +2847,9 @@
           </li>
           <li class="popup-social-list__item">
             <a href="#" class="popup-social-list__link">
-              <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="3" width="33.33" height="33.33" rx="2" fill="#A1A6B4" />
-                <path
+              <svg class="popup-social-list__link-icon" width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect class="popup-social-list__link-icon-rect" x="3" y="3" width="33.33" height="33.33" rx="2" fill="#A1A6B4" />
+                <path class="popup-social-list__link-icon-path"
                   d="M20.7487 26.332H19.3854C19.3854 26.332 16.3772 26.5131 13.7277 23.7545C10.8383 20.7461 8.28686 14.7765 8.28686 14.7765C8.28686 14.7765 8.13973 14.3853 8.29964 14.1959C8.47938 13.9831 8.96857 13.9695 8.96857 13.9695L12.2278 13.9482C12.2278 13.9482 12.5349 13.9994 12.7547 14.1608C12.9359 14.294 13.0373 14.543 13.0373 14.543C13.0373 14.543 13.5641 15.8752 14.2617 17.0804C15.6233 19.4331 16.2575 19.9477 16.7198 19.6957C17.3934 19.3283 17.1914 16.3698 17.1914 16.3698C17.1914 16.3698 17.2037 15.296 16.8522 14.8177C16.58 14.4475 16.0667 14.3391 15.84 14.3089C15.6566 14.2844 15.9576 13.8587 16.3478 13.6676C16.9343 13.3803 17.9699 13.3641 19.1938 13.3765C20.1473 13.3863 20.4219 13.4458 20.7946 13.5357C21.6597 13.7446 21.6327 14.4138 21.5745 15.8578L21.5745 15.8579C21.5571 16.2893 21.537 16.7899 21.537 17.3681C21.537 17.4983 21.5332 17.6371 21.5293 17.7798V17.7799C21.509 18.5193 21.4858 19.3656 21.9726 19.6802C22.2223 19.8415 22.8331 19.7042 24.3603 17.111C25.084 15.8819 25.627 14.4368 25.627 14.4368C25.627 14.4368 25.7453 14.1791 25.9297 14.0688C26.1181 13.9561 26.3726 13.9907 26.3726 13.9907L29.8023 13.9695C29.8023 13.9695 30.8329 13.8466 30.9997 14.3118C31.1747 14.8001 30.6146 15.9402 29.2135 17.8077C27.8827 19.5813 27.236 20.2332 27.2968 20.8106C27.3401 21.2221 27.7429 21.5959 28.5137 22.311L28.5668 22.3603C30.2548 23.9272 30.7051 24.7501 30.8121 24.9456C30.8207 24.9615 30.8271 24.9732 30.8318 24.9809C31.5873 26.2337 29.9939 26.332 29.9939 26.332L26.9477 26.3746C26.9477 26.3746 26.2931 26.5041 25.4317 25.9125C24.9813 25.6033 24.5409 25.0985 24.1214 24.6174L24.1214 24.6174C23.4798 23.8818 22.8868 23.2019 22.3806 23.3624C21.5317 23.6319 21.5583 25.4613 21.5583 25.4613C21.5583 25.4613 21.5645 25.852 21.371 26.0601C21.1605 26.2866 20.7487 26.332 20.7487 26.332Z"
                   fill="#121723" />
               </svg>
@@ -2857,9 +2857,9 @@
           </li>
           <li class="popup-social-list__item">
             <a href="#" class="popup-social-list__link">
-              <svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="3" width="33.33" height="33.33" rx="2" fill="#A1A6B4" />
-                <path
+              <svg class="popup-social-list__link-icon" width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect class="popup-social-list__link-icon-rect" x="3" y="3" width="33.33" height="33.33" rx="2" fill="#A1A6B4" />
+                <path class="popup-social-list__link-icon-path"
                   d="M23.9404 14.9923C23.1518 14.2694 21.7687 13.4043 19.7184 13.4043C16.8309 13.4043 14.3802 15.2649 13.4945 17.8364C13.2761 18.5001 13.1427 19.2111 13.1427 19.9459C13.1427 20.6806 13.2761 21.3917 13.5066 22.0553C14.3802 24.6269 16.8309 26.4874 19.7184 26.4874C21.3441 26.4874 22.5816 26.0489 23.5036 25.4208C24.9595 24.4254 25.6147 22.9441 25.7359 21.9605H19.7184V18.0024H29.9701C30.1278 18.666 30.2007 19.3059 30.2007 20.1829C30.2007 23.4299 29.0116 26.1675 26.9492 28.028C25.1414 29.6634 22.6665 30.6115 19.7184 30.6115C15.4478 30.6115 11.7596 28.2176 9.96405 24.7335C9.22401 23.2877 8.79938 21.6642 8.79938 19.9459C8.79938 18.2275 9.22401 16.604 9.96405 15.1582C11.7596 11.6741 15.4478 9.28027 19.7184 9.28027C22.6665 9.28027 25.1294 10.335 27.022 12.0533L23.9404 14.9923Z"
                   fill="#121723" />
               </svg>
@@ -2873,9 +2873,9 @@
     <div class="popup__body">
       <div class="popup__content">
         <button class="btn-reset popup__btn-close close-popup">
-          <svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="21" cy="21" r="19.5" stroke="#A1A6B4" stroke-width="3" />
-            <path d="M29.6777 12L12 29.6777M29.6777 29.6777L12 12" stroke="#A1A6B4" stroke-width="3" />
+          <svg class="close-popup__icon" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="close-popup__icon-cicrle" cx="21" cy="21" r="19.5" stroke-width="3" />
+            <path class="close-popup__icon-path" d="M29.6777 12L12 29.6777M29.6777 29.6777L12 12" stroke-width="3" />
           </svg>
         </button>
         <p class="popup__title">
@@ -2914,9 +2914,9 @@
     <div class="popup__body">
       <div class="popup__content">
         <button class="btn-reset popup__btn-close close-popup">
-          <svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="21" cy="21" r="19.5" stroke="#A1A6B4" stroke-width="3" />
-            <path d="M29.6777 12L12 29.6777M29.6777 29.6777L12 12" stroke="#A1A6B4" stroke-width="3" />
+          <svg class="close-popup__icon" width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="close-popup__icon-cicrle" cx="21" cy="21" r="19.5" stroke-width="3" />
+            <path class="close-popup__icon-path" d="M29.6777 12L12 29.6777M29.6777 29.6777L12 12" stroke-width="3" />
           </svg>
         </button>
         <p class="popup__title">
@@ -2932,7 +2932,7 @@
           <input type="text" name="login" class="popup-form__input" placeholder="Логин" required>
           <input type="password" name="password" class="popup-form__input" placeholder="Пароль" required>
           <input type="email" name="email" class="popup-form__input" placeholder="eMail" required>
-          <button type="submit" class="btn-reset popup-form__btn">Войти</button>
+          <button type="submit" class="btn-reset popup-form__btn">Зарегистрироваться</button>
         </form>
       </div>
     </div>
