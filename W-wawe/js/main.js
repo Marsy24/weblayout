@@ -1,6 +1,4 @@
 addEventListener('DOMContentLoaded', function () {
-/*
-аутлайн на подкаст паузы*/
   // search-header
   let headerNav = document.querySelector('.header__nav'),
     searchBtn = document.querySelector('.nav__btn-search');
@@ -223,7 +221,7 @@ addEventListener('DOMContentLoaded', function () {
       playlistItems.forEach((del) => {
         del.classList.remove('showing');
       })
-      document.querySelector(`[data-genre="${genre}"]`).setAttribute('checked','');
+      document.querySelector(`[data-genre="${genre}"]`).setAttribute('checked', '');
       document.querySelectorAll(`[data-target-genre="${genre}"]`).forEach((e) => {
         e.classList.add('showing');
       })
@@ -231,7 +229,7 @@ addEventListener('DOMContentLoaded', function () {
   })
 
 
-  // podcasts__audio
+  // podcasts
   const podcastsAudio = document.querySelector('.podcasts__audio'),
     playBtns = document.querySelectorAll('.podcasts-list__btn');
   let podcastsItem = document.querySelectorAll('.podcasts__item');
@@ -274,6 +272,15 @@ addEventListener('DOMContentLoaded', function () {
         Play(isPlaying);
       }
     })
+  })
+
+  const morePodcasts = document.querySelector('.podcasts__link');
+  morePodcasts.addEventListener('click', (e) => {
+    e.preventDefault();
+    const podcastsArray = [podcastsItem[0].cloneNode(true), podcastsItem[1].cloneNode(true), podcastsItem[2].cloneNode(true), podcastsItem[3].cloneNode(true)];
+    for (let i = 0; i < 4; i++) {
+      document.querySelector('.podcasts__list').appendChild(podcastsArray[i]);
+    }
   })
 
   // statistics podcasts
@@ -497,7 +504,7 @@ addEventListener('DOMContentLoaded', function () {
         del.classList.remove('selected');
       })
       !event.target.closest('.genre-list__label').classList.contains('selected') ?
-      event.target.closest('.genre-list__label').classList.add('selected') : event.target.closest('.genre-list__label').classList.remove('selected');
+        event.target.closest('.genre-list__label').classList.add('selected') : event.target.closest('.genre-list__label').classList.remove('selected');
     })
   })
 
