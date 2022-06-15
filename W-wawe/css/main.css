@@ -392,6 +392,8 @@ body {
   align-items: center;
   color: var(--purple);
   cursor: pointer;
+  font-size: var(--standartFz);
+  font-weight: 500;
 }
 
 .spoiler-menu__icon {
@@ -401,13 +403,6 @@ body {
 
 .spoiler-menu__icon-circle {
   fill: currentColor;
-}
-
-.spoiler-menu__title {
-  margin: 0;
-  font-size: var(--standartFz);
-  font-weight: 500;
-  color: inherit;
 }
 
 .header__burger-btn {
@@ -488,11 +483,11 @@ body {
   display: none;
 }
 
-.live-list__btn-play.play .btn-pause-header__icon {
+.live-list__btn-play.play .btn-play-header__icon-pause {
   display: block;
 }
 
-.live-list__btn-play .btn-play-header__icon-path, .live-list__btn-play .btn-pause-header__icon-path {
+.live-list__btn-play .btn-play-header__icon-path, .live-list__btn-play .btn-play-header__icon-path-pause {
   fill: currentColor;
 }
 
@@ -548,7 +543,7 @@ body {
   width: 100%;
 }
 
-.hero__title_black {
+.hero__title-black {
   font-style: normal;
   letter-spacing: unset;
   font-weight: 700;
@@ -688,11 +683,11 @@ body {
   transition: color .3s ease-in-out;
 }
 
-.podcasts-list__btn, .podcasts-list-btn__icon, .podcasts-list-btn-pause__icon {
+.podcasts-list__btn, .podcasts-list-btn__icon, .podcasts-list-btn__icon-pause {
   outline: none;
 }
 
-.podcasts-list-btn-pause__icon, .podcasts-list-btn__icon {
+.podcasts-list-btn__icon-pause, .podcasts-list-btn__icon {
   -webkit-transition: fill .3s ease-in-out;
   -o-transition: fill .3s ease-in-out;
   transition: fill .3s ease-in-out;
@@ -702,11 +697,11 @@ body {
   fill: currentColor;
 }
 
-.podcasts-list-btn__icon-circle, .podcasts-list-btn-pause__icon-circle{
+.podcasts-list-btn__icon-circle, .podcasts-list-btn__icon-circle-pause {
   stroke: currentColor;
 }
 
-.podcasts-list-btn-pause__icon-rect {
+.podcasts-list-btn__icon-rect-pause {
   fill: currentColor;
 }
 
@@ -714,7 +709,7 @@ body {
   display: none;
 }
 
-.podcasts__item.play .podcasts-list-btn-pause__icon {
+.podcasts__item.play .podcasts-list-btn__icon-pause {
   display: block;
 }
 
@@ -889,7 +884,7 @@ body {
 }
 
 .choices__list[aria-expanded] .choices__item.is-highlighted {
-  background: rgba(230, 232, 236, 0.4);
+  background: rgba(230,232,236,0.4);
 }
 
 .choices__list[aria-expanded] .choices__item.is-selected {
@@ -947,7 +942,7 @@ body {
   margin-right: 4px;
 }
 
-.broadcasts-list__icon-path {
+.broadcasts-link__icon-path {
   stroke: currentColor;
 }
 
@@ -1121,7 +1116,7 @@ body {
   margin-bottom: 5px;
 }
 
-.guests-title__sub-title {
+.guests__sub-title {
   margin: 0;
   margin-bottom: 8px;
   color: var(--gray);
@@ -1207,7 +1202,7 @@ body {
 }
 
 .accordion__title:focus-visible {
-  background: rgba(170, 157, 250, 0.3);
+  background: rgba(170,157,250,0.3);
 }
 
 .accordion__panel[hidden] {
@@ -1219,7 +1214,7 @@ body {
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(4, 1fr);
   row-gap: 13px;
-  column-gap: 30px;
+  column-gap: 15px;
   padding: 30px 0;
   border-bottom: 1px solid #A1A6B4;
   opacity: 1;
@@ -1256,7 +1251,7 @@ body {
   margin-bottom: 50px;
 }
 
-.social-list {
+.social__list {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
@@ -1273,7 +1268,7 @@ body {
   max-height: 24px;
 }
 
-.social-list.is-active {
+.social__list.is-active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1431,6 +1426,10 @@ body {
   }
 }
 
+.playlist {
+  padding-bottom: 66px;
+}
+
 .playlist__container {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -1447,7 +1446,7 @@ body {
   margin-bottom: 3px;
 }
 
-.playlist-title__sub-title {
+.playlist__sub-title {
   display: inline-block;
   margin-bottom: 10px;
 }
@@ -1554,7 +1553,7 @@ body {
   margin-right: 30px;
 }
 
-.playlist__item:nth-last-child(n+5) {
+.playlist__item {
   margin-bottom: 30px;
 }
 
@@ -1695,7 +1694,7 @@ body {
   margin-bottom: 12px;
 }
 
-.advs-list__descr_light {
+.advs-list__descr-light {
   color: #F0D288;
 }
 
@@ -1765,7 +1764,7 @@ body {
   margin-bottom: 5px;
 }
 
-.about-title__sub-title {
+.about__sub-title {
   display: inline-block;
   margin-bottom: 8px;
   font-size: var(--biggerFz);
@@ -1833,7 +1832,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(166, 164, 164, .5) url('../img/form__loading.gif') center / 50px no-repeat;
+  background: rgba(166,164,164,.5) url('../img/form__loading.gif') center / 50px no-repeat;
   opacity: 0;
   visibility: hidden;
   transition: opacity .5s ease-in-out 0s, visibility .5s ease-in-out 0s;
@@ -2025,7 +2024,7 @@ body {
   padding-bottom: 0;
 }
 
-.footer-top__container {
+.footer__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2056,7 +2055,7 @@ body {
   transition: color .3s ease-in-out;
 }
 
-.footer-social-list-list__icon-path {
+.footer-social-list-link__icon-path {
   fill: currentColor;
 }
 
@@ -2385,7 +2384,7 @@ body {
   color: white;
 }
 
-.podcasts-list__btn:active .podcasts-list-btn__icon, .podcasts-list__btn:active .podcasts-list-btn-pause__icon {
+.podcasts-list__btn:active .podcasts-list-btn__icon, .podcasts-list__btn:active .podcasts-list-btn__icon-pause {
   fill: var(--primary-shade);
 }
 
@@ -2502,7 +2501,7 @@ body {
 
 /*hover focus active selectBroadcasts*/
 .choices:hover .choices__inner {
-  background: rgba(230, 232, 236, 0.4);
+  background: rgba(230,232,236,0.4);
 }
 
 .choices:focus-visible:not(.is-open) .choices__inner {
@@ -2727,7 +2726,7 @@ body {
 /*hover focus active inputs*/
 .input:hover,
 .input:focus-visible {
-  background: rgba(230, 232, 236, 0.1);
+  background: rgba(230,232,236,0.1);
 }
 
 .input:focus-visible {
@@ -2753,7 +2752,7 @@ body.is-lock {
   min-height: 100vh;
   z-index: 10;
   width: 100%;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0,0,0,.8);
   top: 0;
   left: 0;
   opacity: 0;
@@ -2793,7 +2792,7 @@ body.is-lock {
   display: flex;
   flex-basis: 824px;
   padding: 60px;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgba(0,0,0,1);
   transition: all .8s ease 0s;
   opacity: 0;
   transform: perspective(624px) translate(0px, -100%) rotateX(45deg);
@@ -2990,7 +2989,7 @@ body.is-lock {
 
 #modal_01 .popup-form__input:focus-visible, #modal_03 .popup-form__input:focus-visible,
 #modal_01 .popup-form__input:hover, #modal_03 .popup-form__input:hover {
-  background: rgba(230, 232, 236, 0.1);
+  background: rgba(230,232,236,0.1);
 }
 
 #modal_01 .popup-form__input:focus-visible, #modal_03 .popup-form__input:focus-visible {
