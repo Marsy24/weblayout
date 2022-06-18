@@ -149,10 +149,11 @@ h3 {
 }
 
 .header-account {
-  background-image: url('../img/Keyboard-tab.svg');
+  background-image: url('../img/keyboard-tab.svg');
   background-repeat: no-repeat;
+  background-size:  24px 24px;
   background-position-y: center;
-  background-position-x: left;
+  color: #CC9933;;
 }
 
 .header-account-link {
@@ -160,8 +161,7 @@ h3 {
   font-family: 'Muller', sans-serif;
   font-weight: 400;
   font-size: 16px;
-  line-height: 1;
-  color: #CC9933;;
+  color: #CC9933;
 }
 /* nav */
 .header-nav {
@@ -448,6 +448,7 @@ h3 {
 
 /* accommodation */
 .hotel-card-content {
+  flex-direction: column;
   padding: 35px 46px 40px 45px;
   max-width: 374px;
   background-color: #FFFFFF;
@@ -485,6 +486,7 @@ h3 {
 .advantages-item-btn {
   color: #CC9933;
   background-color: #FFFFFF;
+  max-width: 100px;
 }
 
 .content-price {

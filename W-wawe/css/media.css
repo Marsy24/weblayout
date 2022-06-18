@@ -197,6 +197,11 @@
     height: 112px;
   }
 
+  .no-playlist.showing {
+    top: -30px;
+    left: 0;
+  }
+
   .advs-list__title {
     background-size: contain;
   }
@@ -237,20 +242,6 @@
   .footer__container {
     padding-bottom: 90px;
   }
-
-
-  /*grid page*/
-  .cards-list {
-    -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-
-  .card__item:not(:last-child) {
-    margin-right: unset;
-  }
 }
 
 @media only screen and (max-width: 1440px) {
@@ -260,16 +251,6 @@
 
   .social__list {
     top: 31.5%;
-  }
-
-  /*grid page*/
-  .card__item {
-    -ms-flex-preferred-size: 255px;
-        flex-basis: 255px;
-  }
-
-  .grid__title {
-    margin-bottom: 28px;
   }
 }
 
@@ -311,6 +292,7 @@
   .header__nav {
     padding-top: 20px;
     padding-bottom: 20px;
+    margin-bottom: 0;
     -ms-flex-preferred-size: 100%;
     flex-basis: 100%;
     -webkit-box-pack: justify;
@@ -529,12 +511,6 @@
 
   .footer__bottom {
     background-position-x: -18px;
-  }
-
-  /*grid page*/
-  .grid__btn {
-    padding: 10px 10px;
-    width: 92px;
   }
 }
 
@@ -898,6 +874,10 @@
     width: 100%;
   }
 
+  .about-form__textarea {
+    margin-bottom: 33px;
+  }
+
   .footer__container {
     padding-bottom: 59px
   }
@@ -955,15 +935,6 @@
   .js-input+.form__error:nth-of-type(2) {
     left: 32px;
     top: 63%;
-  }
-
-  /*grid page*/
-  .grid__title {
-    margin-bottom: 30px;
-  }
-
-  .grid__item:nth-child(-n+4) {
-    margin-bottom: 20px;
   }
 }
 
@@ -1091,11 +1062,11 @@
   .menu-list.is-active::before {
     content: '';
     position: absolute;
-    top: -14px;
+    top: -12px;
     left: -32px;
     bottom: -16px;
     right: -100vw;
-
+    width: 100vw;
     background-color: white;
   }
 
@@ -1372,7 +1343,7 @@
   }
 
   .podcasts-list__btn {
-    margin-top: 15px;
+    padding-top: 15px;
     color: var(--purple);
   }
 
@@ -1741,9 +1712,12 @@
 
   .playlist__sub-text {
     padding-top: 20px;
-    max-width: 256px;
     width: unset;
     top: calc(100% - 183px);
+  }
+
+  .no-playlist.showing {
+    font-size: 20px;
   }
 
   .advs__item:first-child {
@@ -1859,6 +1833,10 @@
     line-height: 9px;
   }
 
+  .about-form__textarea {
+    margin-bottom: 30px;
+  }
+
   .input {
     font-size: var(--standartFz);
   }
@@ -1941,51 +1919,5 @@
 
   .about__check.error-mark .form__error {
     font-size: 9px;
-  }
-
-
-
-  /*grid page*/
-  .grid__title {
-    font-size: 24px;
-    line-height: 24px;
-  }
-
-  .cards-list {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding-top: 47px;
-  }
-
-  .grid__list {
-    position: absolute;
-    top: 35px;
-    left: 32px;
-    width: 830px;
-    -webkit-transition: -webkit-transform .4s ease-in-out 0s;
-    transition: -webkit-transform .4s ease-in-out 0s;
-    -o-transition: transform .4s ease-in-out 0s;
-    transition: transform .4s ease-in-out 0s;
-    transition: transform .4s ease-in-out 0s, -webkit-transform .4s ease-in-out 0s;
-  }
-
-  .grid__item:nth-child(-n+4) {
-    margin-bottom: unset;
-  }
-
-  .grid__item:not(:last-child) {
-    margin-right: 15px;
-  }
-
-  .grid__btn {
-    padding: 7.5px 10px;
-  }
-
-  .card__item {
-    width: 100%;
-    -ms-flex-preferred-size: unset;
-        flex-basis: unset;
   }
 }

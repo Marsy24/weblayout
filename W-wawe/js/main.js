@@ -222,9 +222,14 @@ addEventListener('DOMContentLoaded', function () {
         del.classList.remove('showing');
       })
       document.querySelector(`[data-genre="${genre}"]`).setAttribute('checked', '');
-      document.querySelectorAll(`[data-target-genre="${genre}"]`).forEach((e) => {
-        e.classList.add('showing');
-      })
+      if (!document.querySelectorAll(`[data-target-genre="${genre}"]`).length > 0) {
+        document.querySelector('.no-playlist').classList.add('showing');
+      } else {
+        document.querySelectorAll(`[data-target-genre="${genre}"]`).forEach((e) => {
+          e.classList.add('showing');
+          document.querySelector('.no-playlist').classList.remove('showing');
+        });
+      };
     })
   })
 
