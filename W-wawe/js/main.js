@@ -213,15 +213,15 @@ addEventListener('DOMContentLoaded', function () {
   let playlistItems = document.querySelectorAll('.playlist__item');
   inputs.forEach(function (inputClick) {
     inputClick.addEventListener('click', (event) => {
-      event.preventDefault();
+      //event.preventDefault();
       const genre = event.currentTarget.dataset.genre;
-      inputs.forEach((del) => {
-        del.removeAttribute('checked');
-      })
       playlistItems.forEach((del) => {
         del.classList.remove('showing');
       })
-      document.querySelector(`[data-genre="${genre}"]`).setAttribute('checked', '');
+      /*inputs.forEach((active) => {
+        active.removeAttribute('checked');
+      })
+      document.querySelector(`[data-genre=${genre}]`).setAttribute('checked', 'true');*/
       if (!document.querySelectorAll(`[data-target-genre="${genre}"]`).length > 0) {
         document.querySelector('.no-playlist').classList.add('showing');
       } else {
@@ -564,7 +564,10 @@ addEventListener('DOMContentLoaded', function () {
       popupLink.addEventListener('click', (e) => {
         const popupName = popupLink.getAttribute('href').replace('#', '');
         const currentPopup = document.getElementById(popupName);
-        popupOpen(currentPopup);
+        currentPopup.style.display = 'flex';
+        setTimeout(() => {
+          popupOpen(currentPopup);
+        }, 100);
         e.preventDefault();
       });
     }
@@ -601,7 +604,7 @@ addEventListener('DOMContentLoaded', function () {
 
   function bodyLock() {
     const lockPaddingValue = window.innerWidth - document.querySelector('.main-page').offsetWidth + 'px';
-    body.style.paddingRight = lockPaddingValue;
+    //body.style.paddingRight = lockPaddingValue;
     body.classList.add('is-lock');
 
     unlock = false;
@@ -612,7 +615,7 @@ addEventListener('DOMContentLoaded', function () {
 
   function bodyUnLock() {
     setTimeout(() => {
-      body.style.paddingRight = '0px';
+      //body.style.paddingRight = '0px';
       body.classList.remove('is-lock');
     }, timeout);
 
@@ -621,13 +624,6 @@ addEventListener('DOMContentLoaded', function () {
       unlock = true;
     }, timeout);
   }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 27) {
-      const popupActive = document.querySelector('.popup.is-open');
-      popupClose(popupActive);
-    }
-  })
 
 
 
@@ -656,21 +652,5 @@ addEventListener('DOMContentLoaded', function () {
         formMail.classList.remove('is-sending');
       }
     }
-  }
-
-  /*grid page*/
-  let gridBtn = document.querySelectorAll('.grid-btn');
-  if (gridBtn.length > 0) {
-    gridBtn.forEach(function (e) {
-      e.addEventListener('click', (click) => {
-        gridBtn.forEach(function (del) {
-          del.classList.remove('is-active');
-        })
-        if (click.target.classList.contains('grid-btn__time')) {
-          click.target.closest('.grid-btn').classList.add('is-active');
-        }
-        click.target.classList.add('is-active');
-      })
-    })
   }
 })

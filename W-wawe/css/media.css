@@ -636,7 +636,7 @@
   }
 
   .broadcasts {
-    padding-bottom: 188px;
+    padding-bottom: 185px;
     position: relative;
   }
 
@@ -709,7 +709,7 @@
   }
 
   .guests__descr {
-    margin-bottom: 47px;
+    margin-bottom: 49px;
   }
 
   .guests__accordion {
@@ -757,7 +757,7 @@
   }
 
   .playlist__sub-title {
-    margin-bottom: 13px;
+    margin-bottom: 9px;
   }
 
   .playlist__genre-list {
@@ -765,7 +765,11 @@
   }
 
   .genre__item:not(:last-child) {
-    margin-bottom: 37px;
+    margin-bottom: 30px;
+  }
+
+  .playlist-list {
+    padding-top: 14px;
   }
 
   .playlist-list__title {
@@ -844,11 +848,13 @@
 
   .about__content {
     margin: 0;
-    padding-bottom: 169px;
+    padding-bottom: 174px;
     background: url('../img/about-dawn--768px.svg') 100% calc(100% - 30px) no-repeat;
   }
 
-
+  .about-list {
+    margin-bottom: 27px;
+  }
 
   .about__item {
     -ms-flex-preferred-size: 255px;
@@ -867,7 +873,7 @@
 
   .about-form__input:first-of-type {
     margin-right: 0;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
   }
 
   .about-form__input {
@@ -875,7 +881,7 @@
   }
 
   .about-form__textarea {
-    margin-bottom: 33px;
+    margin-bottom: 31px;
   }
 
   .footer__container {
@@ -1062,7 +1068,7 @@
   .menu-list.is-active::before {
     content: '';
     position: absolute;
-    top: -12px;
+    top: -18px;
     left: -32px;
     bottom: -16px;
     right: -100vw;
@@ -1212,6 +1218,7 @@
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
+    min-height: 51.39px;
   }
 
   .header__burger-btn {
@@ -1589,7 +1596,7 @@
   }
 
   .playlist {
-    padding-bottom: 248px;
+    padding-bottom: 244px;
     overflow: hidden;
   }
 
@@ -1630,7 +1637,7 @@
 
   .playlist-list {
     position: relative;
-    top: 57px;
+    top: 54px;
   }
 
   .playlist__country {
@@ -1671,6 +1678,7 @@
     background: var(--primary-shade);
     color: white;
   }
+
   .playlist__link {
     display: block;
   }

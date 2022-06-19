@@ -1459,17 +1459,18 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding-bottom: 32px;
+  padding-bottom: 27px;
   border-bottom: 1px solid #D2D5DD;
 }
 
 .genre__item:not(:last-child) {
-  margin-bottom: 23px;
+  margin-bottom: 16px;
 }
 
 .genre-list__label {
   font-size: var(--biggerFz);
   color: var(--black);
+  cursor: pointer;
 }
 
 .check {
@@ -1479,41 +1480,54 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-left: 42px;
 }
 
 .check__input {
-  position: absolute;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  width: 0;
+  height: 0;
+  opacity: 0;
 }
 
 .check__box {
-  position: absolute;
-  margin-left: -42px;
   width: 30px;
   height: 30px;
-  background-image: url('../img/radio-off.svg');
-  -webkit-transition: background .15s ease-in-out;
-  -o-transition: background .15s ease-in-out;
-  transition: background .15s ease-in-out;
+  margin-right: 12px;
 }
 
-.check__input:checked+.check__box {
-  background-image: url('../img/radio-on.svg');
+.check__box-icon {
+  fill: none;
+  transform: translateY(-2px);
+  transition: fill .3s ease-in-out;
 }
 
-.check__input:focus-visible+.check__box {
-  background-image: url('../img/radio-off-focus.svg');
+.check__box-circle:first-child {
+  stroke: var(--gray);
+  stroke-width: 2;
+  transition: stroke .3s ease-in-out;
 }
 
-.check__input:focus+.check__box {
-  background-image: url('../img/radio-off-focused.svg');
+.check__box-circle:last-child, .check__box-g-circle {
+  fill: transparent;
+  transition: fill .3s ease-in-out;
 }
 
-.check__input:disabled+.check__box {
-  background-image: url('../img/radio-disabled.svg');
+.genre-list__label:focus .check__box-icon .check__box-circle:first-child,
+.genre-list__label:hover .check__box-icon .check__box-circle:first-child {
+  stroke: var(--purple);
+}
+
+.check__input:checked+.check__box .check__box-icon .check__box-circle:last-child,
+.check__input:checked + .check__box > .check__box-icon > circle:nth-child(2),
+.genre-list__label:active .check__box-icon .check__box-circle:last-child,
+.genre-list__label:active .check__box-icon > circle:nth-child(2) {
+  fill: var(--purple)
+}
+
+.check__input:checked+.check__box .check__box-icon .check__box-g .check__box-g-circle,
+.check__input:checked + .check__box > .check__box-icon g circle
+.genre-list__label:active .check__box-icon .check__box-g .check__box-g-circle,
+.genre-list__label:active .check__box g circle {
+  fill: white;
 }
 
 .playlist__link {
@@ -1583,9 +1597,9 @@ body {
   max-width: 160px;
   padding: 14px 21px 11px 15px;
   border: 1px solid #E6E8EC;
-  -webkit-transition: border .3s ease-in-out, color .1s ease-in-out, background .3s ease-in-out;
-  -o-transition: border .3s ease-in-out, color .1s ease-in-out, background .3s ease-in-out;
-  transition: border .3s ease-in-out, color .1s ease-in-out, background .3s ease-in-out;
+  -webkit-transition: border .1s ease-in-out, color .1s ease-in-out, background .1s ease-in-out;
+  -o-transition: border .1s ease-in-out, color .1s ease-in-out, background .1s ease-in-out;
+  transition: border .1s ease-in-out, color .1s ease-in-out, background .1s ease-in-out;
 }
 
 .playlist-list__title {
@@ -1619,11 +1633,11 @@ body {
 }
 
 .playlist-list__img {
-  -webkit-transition: opacity .3s ease-in-out, -webkit-filter .3s ease-in-out;
-  transition: opacity .3s ease-in-out, -webkit-filter .3s ease-in-out;
-  -o-transition: opacity .3s ease-in-out, filter .3s ease-in-out;
-  transition: opacity .3s ease-in-out, filter .3s ease-in-out;
-  transition: opacity .3s ease-in-out, filter .3s ease-in-out, -webkit-filter .3s ease-in-out;
+  -webkit-transition: opacity .1s ease-in-out, -webkit-filter .1s ease-in-out;
+  transition: opacity .1s ease-in-out, -webkit-filter .1s ease-in-out;
+  -o-transition: opacity .1s ease-in-out, filter .1s ease-in-out;
+  transition: opacity .1s ease-in-out, filter .1s ease-in-out;
+  transition: opacity .1s ease-in-out, filter .1s ease-in-out, -webkit-filter .1s ease-in-out;
 }
 
 .no-playlist.showing {
@@ -2473,11 +2487,11 @@ body {
   background-position: center 59px;
   background-repeat: no-repeat;
   opacity: 0;
-  -webkit-transition: opacity .4s ease-in-out, -webkit-transform .3s ease-in-out;
-  transition: opacity .4s ease-in-out, -webkit-transform .3s ease-in-out;
-  -o-transition: opacity .4s ease-in-out, transform .3s ease-in-out;
-  transition: opacity .4s ease-in-out, transform .3s ease-in-out;
-  transition: opacity .4s ease-in-out, transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+  -webkit-transition: opacity .1s ease-in-out, -webkit-transform .1s ease-in-out;
+  transition: opacity .1s ease-in-out, -webkit-transform .1s ease-in-out;
+  -o-transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+  transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+  transition: opacity .1s ease-in-out, transform .1s ease-in-out, -webkit-transform .1s ease-in-out;
 }
 
 .playlist__link:hover::after,
@@ -2582,7 +2596,6 @@ body.is-lock {
 /*General styles*/
 .popup {
   position: fixed;
-  display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
